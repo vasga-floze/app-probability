@@ -2,10 +2,10 @@ C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\bin\Debug\estadisticaA
 C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\bin\Debug\estadisticaApp.exe
 C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\bin\Debug\estadisticaApp.pdb
 C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.csprojAssemblyReference.cache
-C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.Form1.resources
-C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.ProbBinomial.resources
 C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.Properties.Resources.resources
 C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.csproj.GenerateResource.cache
 C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.exe
 C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.pdb
-C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.ProbHipergeometrica.resources
+C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.frmProbBinomial.resources
+C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.frmProbHipergeometrica.resources
+C:\Users\gabri\source\repos\estadisticaApp\estadisticaApp\obj\Debug\estadisticaApp.frmInicio.resources
