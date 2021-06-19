@@ -28,24 +28,78 @@ namespace estadisticaApp
             double aCaract = double.Parse(txt_aCaracteristica.Text);
             double xCant = double.Parse(txt_xCantExitos.Text);
 
-            
-            //Validar entrada de datos
-            const string mensaje1 = "La muestra NO puede ser mayor a la cantidad de elementos con característica deseada.";
+            //validar combinacion donde a no puede ser menor a x
+            const string mensaje1 = "'a' debe contener un valor mayor a 'x'";
             const string caption_1 = "¡ENTRADA DE DATO INVALIDA!";
-            if (nMuest > aCaract)
+            if (aCaract < xCant)
             {
                 MessageBox.Show(mensaje1, caption_1, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_aCaracteristica.Clear();
+                txtResultado.Clear();
+
+            }
+
+            //Validar entrada de datos (solo numeros positivos)
+            const string msg= "No se puede ingresar numeros negativos!";
+            const string capt = "¡ENTRADA DE DATO INVALIDA";
+            if (aCaract < 0)
+            {
+                MessageBox.Show(msg, capt, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_aCaracteristica.Clear();
+                txt_nPoblacion.Clear();
+                txt_nMuestraPobl.Clear();
+                txt_xCantExitos.Clear();
+                txt_aCaracteristica.Focus();
+            }
+            if (xCant < 0)
+            {
+                MessageBox.Show(msg, capt, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_aCaracteristica.Clear();
+                txt_nPoblacion.Clear();
+                txt_nMuestraPobl.Clear();
+                txt_xCantExitos.Clear();
+                txt_aCaracteristica.Focus();
+            }
+            if (nMuest < 0)
+            {
+                MessageBox.Show(msg, capt, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_aCaracteristica.Clear();
+                txt_nPoblacion.Clear();
+                txt_nMuestraPobl.Clear();
+                txt_xCantExitos.Clear();
+                txt_aCaracteristica.Focus();
+            }
+            if (nPobl < 0)
+            {
+                MessageBox.Show(msg, capt, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_aCaracteristica.Clear();
+                txt_nPoblacion.Clear();
+                txt_nMuestraPobl.Clear();
+                txt_xCantExitos.Clear();
+                txt_aCaracteristica.Focus();
+            }
+
+            //Validar entrada de datos
+            const string mensaje2 = "La muestra NO debería ser mayor a la cantidad de elementos con característica deseada.";
+            const string caption_2 = "¡ENTRADA DE DATO INVALIDA!";
+            if (nMuest <= aCaract)
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show(mensaje2, caption_2, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_nMuestraPobl.Clear();
             }
 
-            const string mensaje2 = "La cantidad de éxitos 'x' NO puede ser mayor a la cantidad de la muestra";
-            const string caption_2 = "¡ENTRADA DE DATO INVALIDA!";
+            const string mensaje3 = "La cantidad de éxitos 'x' NO puede ser mayor a la cantidad de la muestra";
+            const string caption_3 = "¡ENTRADA DE DATO INVALIDA!";
             if (xCant > nMuest)
             {
-                MessageBox.Show(mensaje2, caption_2, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensaje3, caption_3, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_xCantExitos.Clear();
             }
-
+            
 
             //****************************************************************
 
@@ -136,7 +190,7 @@ namespace estadisticaApp
             {
                 fact_N = fact_N * u;
             }
-            MessageBox.Show(fact_N.ToString(), "Factorial de NPobl");
+            
 
             //Calcular factorial de n  ----> x!
             double a, fact_n; //o solo la esta haciendo de contador y factn esta almacenando el factorial de n
@@ -145,12 +199,12 @@ namespace estadisticaApp
             {
                 fact_n = fact_n * a;
             }
-            MessageBox.Show(fact_n.ToString(), "Factorial de nMuest");
+            
 
             //Resta de N-n  ---->  (n-x)!
             double restaN_n;
             restaN_n = nPobl - nMuest;
-            MessageBox.Show(restaN_n.ToString(), "Resta de N-n");
+            
 
             //Calcular factorial de N-n ---->  (n-x)!
             double r, factResta_N_n; //r solo la esta haciendo de contador y factn esta almacenando el factorial de n
@@ -159,7 +213,7 @@ namespace estadisticaApp
             {
                 factResta_N_n = factResta_N_n * r;
             }
-            MessageBox.Show(factResta_N_n.ToString(), "Factorial de N-n");
+            
 
             //Calculo parentesis tres
             numerador3 = fact_N;
@@ -186,13 +240,13 @@ namespace estadisticaApp
 
         private void playAtras()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\Documents\CII-2020\Estadistica Computacional\atras.wav");
+            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\source\repos\estadisticaApp\atras.wav");
             simpleSound.Play();
         }
 
         private void playSalir()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\Documents\CII-2020\Estadistica Computacional\salir.wav");
+            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\source\repos\estadisticaApp\salir.wav");
             simpleSound.Play();
         }
 
@@ -225,6 +279,59 @@ namespace estadisticaApp
             consejoflotante.SetToolTip(this.txt_nMuestraPobl, "escriba aquí el tamaño de la muestra");
             consejoflotante.SetToolTip(this.txt_aCaracteristica, "escriba aquí la cantidad que cumple con la característica deseada.");
             consejoflotante.SetToolTip(this.txt_xCantExitos , "escriba aquí la cantidad de éxitos");
+        }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+            playAtras();
+            frmInicio f = new frmInicio();
+            f.Visible = true;
+            this.Dispose();
+        }
+
+        private void txt_nPoblacion_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txt_nPoblacion_Validating(object sender, CancelEventArgs e)
+        {
+            //Validar que no hayan campos vacíos 
+            if (txt_nPoblacion.Text == string.Empty)
+            {
+                errorProvider.SetError(txt_nPoblacion, "Debe introducir un valor");
+
+            }
+        }
+
+        private void txt_nMuestraPobl_Validating(object sender, CancelEventArgs e)
+        {
+            //Validar que no hayan campos vacíos 
+            if (txt_nMuestraPobl.Text == string.Empty)
+            {
+                errorProvider.SetError(txt_nMuestraPobl, "Debe introducir un valor");
+            }
+            
+        }
+
+        private void txt_aCaracteristica_Validating(object sender, CancelEventArgs e)
+        {
+            //Validar que no hayan campos vacíos 
+            if (txt_aCaracteristica.Text == string.Empty)
+            {
+                errorProvider.SetError(txt_aCaracteristica, "Debe introducir un valor");
+
+            }
+        }
+
+        private void txt_xCantExitos_Validating(object sender, CancelEventArgs e)
+        {
+            //Validar que no hayan campos vacíos 
+            if (txt_xCantExitos.Text == string.Empty)
+            {
+                errorProvider.SetError(txt_xCantExitos, "Debe introducir un valor");
+
+            }
         }
     }
 }
