@@ -35,13 +35,52 @@ namespace estadisticaApp
             double n = double.Parse(txt_nMuestra.Text);
             txt_qFracaso.Text = q.ToString();
 
+            //Validar entrada de datos (solo numeros positivos)
+            if (double.Parse(txt_pExito.Text) < 0 )
+            {
+                MessageBox.Show("No se puede ingresar numeros negativos o mayores a 1!", "¡ENTRADA DE DATO INVALIDA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_pExito.Clear();
+                txt_xVariable.Clear();
+                txt_nMuestra.Clear();
+                txt_qFracaso.Clear(); //*****************
+                txt_pExito.Focus();
+            }
+            if (int.Parse(txt_xVariable.Text) < 0)
+            {
+                MessageBox.Show("No se puede ingresar numeros negativos!", "¡ENTRADA DE DATO INVALIDA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_xVariable.Clear();
+                txt_pExito.Clear();
+                txt_nMuestra.Clear();
+                txt_xVariable.Focus();
+            }
+
+            if (double.Parse(txt_nMuestra.Text) < 0)
+            {
+                MessageBox.Show("No se puede ingresar numeros negativos!", "¡ENTRADA DE DATO INVALIDA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_nMuestra.Clear();
+                txt_xVariable.Clear();
+                txt_pExito.Clear();
+                txt_nMuestra.Focus();
+            }
+
+            if ( double.Parse(txt_pExito.Text) > 1)
+            {
+                MessageBox.Show("No se puede ingresar mayores a 1 en p", "¡ENTRADA DE DATO INVALIDA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_pExito.Clear();
+                txt_xVariable.Clear();
+                txt_nMuestra.Clear();
+                txt_pExito.Focus();
+            }
+
             //Validar entrada de datos
-            const string mensaje1 = "No puedes tener una probabilidad de éxito mayor a 1";
+            const string mensaje1 = "No puedes ingresar un valor para x mayor que n";
             const string caption_1 = "¡ENTRADA DE DATO INVALIDA!";
-            if (p > 1)
+            if (x > n)
             {
                 MessageBox.Show(mensaje1, caption_1, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txt_pExito.Clear();
+                txt_xVariable.Clear();
+                txt_nMuestra.Clear();
+                txtResultado.Clear();
             }
 
             //Calcular factorial de n
@@ -69,7 +108,7 @@ namespace estadisticaApp
             //Validar que factorial de x sea diferente de 0
             if (factx == 0)
             {
-                factx = 1;
+                factx = 1 ;
             }
 
             //Resta de n-x
@@ -120,12 +159,12 @@ namespace estadisticaApp
 
         private void playSalir()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\Documents\CII-2020\Estadistica Computacional\salir.wav");
+            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\source\repos\estadisticaApp\salir.wav");
             simpleSound.Play();
         }
         private void playAtras()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\Documents\CII-2020\Estadistica Computacional\atras.wav");
+            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\source\repos\estadisticaApp\atras.wav");
             simpleSound.Play();
         }
 
@@ -151,7 +190,35 @@ namespace estadisticaApp
             consejoflotante.SetToolTip(this.txt_xVariable, "escriba aquí la cantidad de eventos");
 
         }
+
+
+        private void txt_pExito_Validating(object sender, CancelEventArgs e)
+        {
+            //Validar que no hayan campos vacíos 
+            if (txt_pExito.Text == string.Empty)
+            {
+                errorProvider.SetError(txt_pExito, "Debe introducir un valor");
+
+            }
+        }
+
+        private void txt_nMuestra_Validating(object sender, CancelEventArgs e)
+        {
+            if(txt_nMuestra.Text == string.Empty)
+            {
+                errorProvider.SetError(txt_nMuestra, "Debe introducir un valor");
+            }
+        }
+
+        private void txt_xVariable_Validating(object sender, CancelEventArgs e)
+        {
+            if (txt_xVariable.Text == string.Empty)
+            {
+                errorProvider.SetError(txt_xVariable, "Debe introducir un valor");
+            }
+        }
     }
+
 
     
 }

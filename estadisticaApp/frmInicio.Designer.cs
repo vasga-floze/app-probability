@@ -125,6 +125,7 @@
             this.Controls.Add(this.btnHipergeometrica);
             this.Controls.Add(this.btnBinomial);
             this.Controls.Add(this.lblName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmInicio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

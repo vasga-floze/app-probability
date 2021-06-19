@@ -43,23 +43,27 @@ namespace estadisticaApp
         //Metodos para administrar el sonido
         private void playEnterMouse()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\Documents\CII-2020\Estadistica Computacional\enterMouse.wav");
+            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\source\repos\estadisticaApp\enterMouse.wav");
             simpleSound.Play();
         }
         private void playSalir()
         {
-            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\Documents\CII-2020\Estadistica Computacional\salir.wav");
+            SoundPlayer simpleSound = new SoundPlayer(@"C:\Users\gabri\source\repos\estadisticaApp\salir.wav");
             simpleSound.Play();
         }
 
         private void btnMultinomial_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            ProbMultinomial probMultinomial = new ProbMultinomial();
+            probMultinomial.Visible = true;
         }
 
         private void btnPoisson_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            ProbPoisson probPoisson = new ProbPoisson();
+            probPoisson.Visible = true;
         }
 
         private void btnHipergeometrica_MouseEnter(object sender, EventArgs e)
